@@ -21,4 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/capturas',[APICartaController::class, 'index'])-> name('api.capturas.index');
+Route::get('/capturas/create', 
+[APICartaController::class, 'create'])->
+                name('api.capturas.create');
 Route::post('/capturas',[APICartaController::class, 'store'])-> name('api.capturas.store');
+Route::delete('/capturas/{id}', [APICartaController::class, 'destroy'])->name('api.capturas.destroy');

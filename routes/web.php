@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\CartaController as APICartaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "capturas astrales";
 });
+
+Route::get('/capturas', 
+[APICartaController::class, 'index']) ->
+                name('api.capturas.index');
+Route::get('/capturas/create', 
+[APICartaController::class, 'create'])->
+                name('api.capturas.create');
+Route::post('/capturas/store',
+[APICartaController::class, 'store'])->
+                name('api.capturas.store');
+Route::delete('/capturas/{id}', [APICartaController::class, 'destroy'])->name('api.capturas.destroy');
